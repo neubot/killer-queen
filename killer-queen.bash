@@ -11,7 +11,7 @@ function mlabssh() {
 
 function killerqueen() {
   mlabssh $1 'sudo ./init/stop.sh && sleep 3 && ' \
-    'sudo rm ./neubot/bin/linux_386/botticelli && sudo ./init/start.sh'
+    'sudo rm -f ./neubot/bin/linux_386/botticelli && sudo ./init/start.sh'
   if [ $? -ne 0 ]; then
     echo $1 | tee -a BAD.txt
   else

@@ -20,8 +20,8 @@ function killerqueen() {
 }
 
 function enumerate() {
-  curl -fsSL 'https://mlab-ns.appspot.com/neubot?policy=all' \
-      | jq '.[]|.fqdn' | tr -d '"' | sed 's/^neubot.mlab.//g'
+  curl -fsSL https://storage.googleapis.com/operator-mlab-oti/metadata/v0/current/mlab-host-ips.json \
+      | jq '.[]|.hostname' | tr -d '"' | grep neubot | sed 's/^neubot.mlab.//g'
 }
 
 if [ $# -eq 0 ]; then

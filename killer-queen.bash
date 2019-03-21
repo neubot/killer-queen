@@ -24,6 +24,9 @@ function enumerate() {
       | jq '.[]|.fqdn' | tr -d '"' | sed 's/^neubot.mlab.//g'
 }
 
-for host in `enumerate`; do
+if [ $# -eq 0 ]; then
+  set -- `enumerate`
+fi
+for host in "$@"; do
   killerqueen $host
 done
